@@ -13,3 +13,8 @@ It uses PySimpleGUI for the GUI:
 ![image](https://user-images.githubusercontent.com/24609727/84314169-e4649680-ab67-11ea-88e4-37557f9a8425.png)
 ![image](https://user-images.githubusercontent.com/24609727/84314207-f47c7600-ab67-11ea-9931-4060312a6867.png)
 ![image](https://user-images.githubusercontent.com/24609727/84314227-fba38400-ab67-11ea-9b93-91c29e17e6c2.png)
+
+## Planned Features
+
+* Character Generator
+* Story/World Generator
