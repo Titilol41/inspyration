@@ -1,10 +1,24 @@
 import PySimpleGUI as sg
 from random import *
 
-sg.theme('Dark Teal 4')  # please make your windows colorful
+qualities = [
 
-layout = [[sg.Text('Generate an...')],
+]
+
+flaws = [
+
+]
+
+
+
+sg.theme('Dark Teal 4')
+
+layout = [[sg.Text('Choose what to generate...')],
+          [sg.Text("Actions:")],
           [sg.Button("Action", size=(10, 2)), sg.Button("Interaction", size=(10,2))],
+          [sg.Text("Characters:")],
+          [sg.Button("Modern", size=(10, 1)), sg.Button("Fantasy", size=(10,1))],
+          [sg.Button("Superhero", size=(10, 1)), sg.Button("Furry", size=(10,1))],
           [sg.Text("by beltza~")],
           [sg.Text("original prompts list on https://salison.tumblr.com/")]]
 
@@ -88,5 +102,14 @@ while True:
         ])
         sg.popup("Your generated prompt is to draw two characters...",
         generated + "!")
+    if event == "Modern":
+        sg.popup("Your generated character concept is...",
+        "A highschool girl, dressed with cherry colors, most of the time depressed, but sometimes admirative!")
+    if event == "Fantasy":
+        break
+    if event == "Superhero":
+        break
+    if event == "Furry":
+        break
 
 window.close()
