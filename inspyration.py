@@ -8,7 +8,7 @@ layout = [[sg.Text('Generate an...')],
           [sg.Text("by beltza~")],
           [sg.Text("original prompts list on https://salison.tumblr.com/")]]
 
-window = sg.Window('InsPyRation', layout)
+window = sg.Window('inspyration', layout)
 
 while True:
     event, values = window.read()
