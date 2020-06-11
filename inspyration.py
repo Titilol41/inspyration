@@ -24,10 +24,10 @@ flaws = [
 ]
 
 colors = [
-"yellow", "green", "blue", "purple", "brown", "red", "pink", "orange",
-"cherry", "banana", "coconut", "lime", "pumpkin", "space", "strawberry",
-"peach", "sunset", "pastel", "rainbow", "lemonade", "turquoise",
-"teal", "crimson", "blood", "nature", "mint"
+"a yellow", "a green", "a blue", "a purple", "a brown", "a red", "a pink", "an orange",
+"a cherry", "a banana", "a coconut", "a lime", "a pumpkin", "a space", "a strawberry",
+"a peach", "a sunset", "a pastel", "a rainbow", "a lemonade", "a turquoise",
+"a teal", "a crimson", "a blood", "a nature", "a mint", "a metal", "a neon", "a candy"
 ]
 
 def traits_list():
@@ -36,11 +36,18 @@ def traits_list():
     else:
         return[choice(flaws), choice(qualities)]
 
-def character_popup(theme_specific, colors, generated):
-    sg.popup("Your generated character concept is...",
-        "{}, with a(n) {} theme, most of the times {}, but sometimes {}!".format(
-            choice(theme_specific), choice(colors), generated[0], generated[1])
-            )
+def character_popup(theme_specific, colors, generated, hero):
+    if hero == True:
+        sg.popup("Your generated character concept is...",
+                    "A hero with the power of {}, with {} theme, most of the times {}, but sometimes {}!".format(
+                    choice(theme_specific), choice(colors), generated[0], generated[1])
+                    )
+        generated = traits_list()
+    else:
+        sg.popup("Your generated character concept is...",
+            "{}, with {} theme, most of the times {}, but sometimes {}!".format(
+               choice(theme_specific), choice(colors), generated[0], generated[1])
+              )
 
 
 sg.theme('Dark Teal 4')
@@ -65,7 +72,7 @@ while True:
     if event == "About...":
         sg.popup("inspyration is a small tool to help artists and writers get inspired.",
         "inspyration by beltza on https://github.com/Titilol41/inspyration", 
-        "original prompts list on https://salison.tumblr.com",
+        "original action/interaction prompts list on https://salison.tumblr.com",
         title="About inspyration",)
     if event == "Github":
         webbrowser.open("https://github.com/TitiloL41/inspyration")
@@ -153,7 +160,7 @@ while True:
             "A dancer"
         ]
         generated = traits_list()
-        character_popup(theme_specific, colors, generated)
+        character_popup(theme_specific, colors, generated, False)
     if event == "Fantasy":
         theme_specific = [
             "A barbarian", "A bard", "A cleric", "A druid", "A fighter",
@@ -161,9 +168,20 @@ while True:
             "A warlock", "A wizard"
         ]
         generated = traits_list()
-        character_popup(theme_specific, colors, generated)
+        character_popup(theme_specific, colors, generated, False)
     if event == "Superhero":
-        break
+        theme_specific = [
+            "flight", "invisibility", "super strength", "fire manipulation", "super speed",
+            "telepathy", "light bending", "invulnerability", "telekinesis", "shapeshifting",
+            "teleportation", "immortality", "time travel", "mind control", "magnetic manipulation",
+            "healing", "atomic manipulation", "weather control", "x-ray vision", "eletric manipulation",
+            "ice manipulation", "spider webs", "reality warping", "force field", "super intelligence",
+            "danger warning", "power stealing", "water control", "airbending", "phasing",
+            "precognition", "time pause", "self-multiplication", "size shifting", "gravity control",
+            "energy blasts"
+        ]
+        generated = traits_list()
+        character_popup(theme_specific, colors, generated, True)
     if event == "Furry":
         theme_specific = [
             "A wolf", "A fox", "A dragon", "A cat", "A tiger", "A dog", "A lion", "A rabbit",
@@ -173,6 +191,6 @@ while True:
             "A squirrel", "A mouse", "A lynx", "A cougar", "A bird", "An unicorn", "A llama"
         ]
         generated = traits_list()
-        character_popup(theme_specific, colors, generated)
+        character_popup(theme_specific, colors, generated, False)
 
 window.close()
