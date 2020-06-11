@@ -1,12 +1,13 @@
 import PySimpleGUI as sg
 from random import choice, randint
+import webbrowser
 
 qualities = [
 "honest", "loyal", "respectful", "responsible", "passionate", "fair",
 "forgiving", "authentic", "brave", "generous", "persevering", "polite", "kind",
 "loving", "optimistic", "disciplined", "ambitious", "encouraging", "calm", "adventurous",
 "cheerful", "affectionate", "bright", "creative", "dynamic", "friendly", "funny"
-"gentle", "genuine", "helpful", "humble" "insightful", "mature", "patient",
+"gentle", "genuine", "helpful", "humble", "insightful", "mature", "patient",
 "persuasive", "powerful", "relaxed", "romantic", "sociable", "tolerant", "wise"
 ]
 
@@ -44,21 +45,30 @@ def character_popup(theme_specific, colors, generated):
 
 sg.theme('Dark Teal 4')
 
-layout = [[sg.Text('Choose what to generate...')],
+menu_def = [['Help', ['Github', 'About...']]]
+
+layout = [[sg.Menu(menu_def)],
+          [sg.Text('Choose what to generate...')],
           [sg.Text("Actions:")],
           [sg.Button("Action", size=(10, 2)), sg.Button("Interaction", size=(10,2))],
           [sg.Text("Characters:")],
           [sg.Button("Modern", size=(10, 1)), sg.Button("Fantasy", size=(10,1))],
-          [sg.Button("Superhero", size=(10, 1)), sg.Button("Furry", size=(10,1))],
-          [sg.Text("by beltza~")],
-          [sg.Text("original prompts list on https://salison.tumblr.com/")]]
+          [sg.Button("Superhero", size=(10, 1)), sg.Button("Furry", size=(10,1))]]
 
 window = sg.Window('inspyration', layout)
+
 
 while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED or event == 'Exit':
         break
+    if event == "About...":
+        sg.popup("inspyration is a small tool to help artists and writers get inspired.",
+        "inspyration by beltza on https://github.com/Titilol41/inspyration", 
+        "original prompts list on https://salison.tumblr.com",
+        title="About inspyration",)
+    if event == "Github":
+        webbrowser.open("https://github.com/TitiloL41/inspyration")
     if event == "Action":
         generated = choice([
             "Jumping", "Falling", "Sitting", "Talking", "Walking",
@@ -69,7 +79,7 @@ while True:
             "Lecturing", "Whispering", "Shouting", "Laughing", "Throwing",
             "Catching", "Cooking", "Cleaning", "Examining", "Giving", "Taking",
             "Calling (to someone, on the phone", "Listening to music",
-            "Playing a musical instrument", "Petting an animal", "Shooting"
+            "Playing a musical instrument", "Petting an animal", "Shooting",
             "Putting on clothes", "Reading", "Watching (people, tv, movies)",
             "Knitting", "Blocking (someone, something)", "Dancing",
             "Bumping (into someone, something)", "Hanging (upside down, on a cliff)",
@@ -82,7 +92,7 @@ while True:
             "Kite flying", "Running", "Showing", "Pushing", "Pulling", "Sewing",
             "Writing", "Sneaking", "Holding (flowers, hands)", "Balancing",
             "Fingernail painting", "Tying (tie, bandage, bow)", "Pointing",
-            "Crawling", "Playing poker", "Stabbing", "Driving", "Brushing teeth"
+            "Crawling", "Playing poker", "Stabbing", "Driving", "Brushing teeth",
             "Stacking (books, cards)", "Drawing", "Dropping something",
             "Picking something up", "Fixing something", "Exercising", "Streching",
             "Stargazing"
@@ -155,6 +165,14 @@ while True:
     if event == "Superhero":
         break
     if event == "Furry":
-        break
+        theme_specific = [
+            "A wolf", "A fox", "A dragon", "A cat", "A tiger", "A dog", "A lion", "A rabbit",
+            "A raccoon", "A leopard", "A bear", "A panther", "An otter", "A skunk",
+            "An horse", "A cheetah", "A were(wolf)", "A coyote", "A kangaroo", "A cougar",
+            "A gryphon", "A bat", "A ferret", "A hyena", "A dinosaur", "A jackal", "A rat",
+            "A squirrel", "A mouse", "A lynx", "A cougar", "A bird", "An unicorn", "A llama"
+        ]
+        generated = traits_list()
+        character_popup(theme_specific, colors, generated)
 
 window.close()
