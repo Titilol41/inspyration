@@ -2,13 +2,38 @@ import PySimpleGUI as sg
 from random import *
 
 qualities = [
-
+"honest", "loyal", "respectful", "responsible", "passionate", "fair",
+"forgiving", "authentic", "brave", "generous", "persevering", "polite", "kind",
+"loving", "optimistic", "disciplined", "ambitious", "encouraging", "calm", "adventurous",
+"cheerful", "affectionate", "bright", "creative", "dynamic", "friendly", "funny"
+"gentle", "genuine", "helpful", "humble" "insightful", "mature", "patient",
+"persuasive", "powerful", "relaxed", "romantic", "sociable", "tolerant", "wise"
 ]
 
 flaws = [
-
+"obsessed", "cruel", "manipulative", "selfish", "jealous", "abusive",
+"dishonest", "envious", "erratic", "flirty", "gluttonous", "humourless",
+"hypocritical", "idealist", "immature", "impatient", "indecisive", "judgemental",
+"lewd", "naïve", "overemotional", "overambitious", "perfectionist", "reckless",
+"remorseless", "timid", "untrustworthy", "lustful", "agressive",
+"lazy", "arrogant", "boring", "careless", "cold", "desperate", "forgetful",
+"greedy", "guillible", "harsh", "hateful", "hostile", "killjoy", "mean",
+"nasty", "narrow-minded", "paranoid", "pessimistic", "procrastinating",
+"rigid", "rude", "stupid", "uncaring", "withdrawn", "shameless"
 ]
 
+colors = [
+"yellow", "green", "blue", "purple", "brown", "red", "pink", "orange",
+"cherry", "banana", "coconut", "lime", "pumpkin", "space", "strawberry",
+"peach", "sunset", "pastel", "rainbow", "lemonade", "turquoise",
+"teal", "crimson", "blood", "nature", "mint"
+]
+
+def traits_list():
+    if randint(0, 1) == 0:
+        return [choice(qualities), choice(flaws)]
+    else:
+        return[choice(flaws), choice(qualities)]
 
 
 sg.theme('Dark Teal 4')
@@ -103,8 +128,19 @@ while True:
         sg.popup("Your generated prompt is to draw two characters...",
         generated + "!")
     if event == "Modern":
+        theme_specific = [
+            "A highschool girl", "A student", "A kindergarten teacher", "A teenager", "A gamer", "A scientist",
+            "A doctor", "A reporter", "A priest", "An electrician", "A clown", "A gardener",
+            "A housekeeper", "A builder", "A waiter", "An engineer", "A sportsman", "A cameraman",
+            "A barman", "A postman", "A policeman", "A highschool student", "An aspiring singer",
+            "An artist", "An edgy kid", "A writer" "A weeb", "A middle-school student", "An aspiring magician",
+            "A dancer"
+        ]
+        generated = traits_list()
         sg.popup("Your generated character concept is...",
-        "A highschool girl, dressed with cherry colors, most of the time depressed, but sometimes admirative!")
+        "{}, with a(n) {} theme, most of the times {}, but sometimes {}!".format(
+            choice(theme_specific), choice(colors), generated[0], generated[1])
+            )
     if event == "Fantasy":
         break
     if event == "Superhero":
