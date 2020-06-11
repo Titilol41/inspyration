@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from random import *
+from random import choice, randint
 
 qualities = [
 "honest", "loyal", "respectful", "responsible", "passionate", "fair",
