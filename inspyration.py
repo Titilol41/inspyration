@@ -35,6 +35,12 @@ def traits_list():
     else:
         return[choice(flaws), choice(qualities)]
 
+def character_popup(theme_specific, colors, generated):
+    sg.popup("Your generated character concept is...",
+        "{}, with a(n) {} theme, most of the times {}, but sometimes {}!".format(
+            choice(theme_specific), choice(colors), generated[0], generated[1])
+            )
+
 
 sg.theme('Dark Teal 4')
 
@@ -137,12 +143,15 @@ while True:
             "A dancer"
         ]
         generated = traits_list()
-        sg.popup("Your generated character concept is...",
-        "{}, with a(n) {} theme, most of the times {}, but sometimes {}!".format(
-            choice(theme_specific), choice(colors), generated[0], generated[1])
-            )
+        character_popup(theme_specific, colors, generated)
     if event == "Fantasy":
-        break
+        theme_specific = [
+            "A barbarian", "A bard", "A cleric", "A druid", "A fighter",
+            "A monk", "A paladin", "A ranger", "A rogue", "A sorcerer",
+            "A warlock", "A wizard"
+        ]
+        generated = traits_list()
+        character_popup(theme_specific, colors, generated)
     if event == "Superhero":
         break
     if event == "Furry":
